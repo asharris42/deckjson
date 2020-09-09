@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>JSON Deck > Card names</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+<label for="deckJSON">Paste the full contents of the JSON file here;</label><br />
+
+<textarea id="deckJSON" name="deckJSON" rows="4" cols="50">
+
+</textarea> <br />
+<button onclick="parseDeck()">Parse deck JSON</button>
+
+<div id="rawList"></div>
+<script type="text/javascript">
+
+function parseDeck() {
+	decklist = JSON.parse($('#deckJSON').val());
+	$.each(decklist.ObjectStates, function(key, val) {
+		$.each(val.ContainedObjects, function(ley, wal) {
+			$('#rawList').append(wal.Nickname + "<br />");
+		})
+	})
+}
+
+</script>
+
+</body>
